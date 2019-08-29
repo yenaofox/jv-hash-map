@@ -83,4 +83,12 @@ public class MyHashMapTest {
         MyMap<Car, Integer> myHashMap = new MyHashMap();
         Assert.assertEquals(0, myHashMap.getSize());
     }
+
+    @Test
+    public void getSizeWithCollision() {
+        MyMap<Plane, Integer> myHashMap = new MyHashMap();
+        myHashMap.put(firstPlane, 3);
+        myHashMap.put(secondPlane, 5);
+        Assert.assertEquals(2, myHashMap.getSize());
+    }
 }
