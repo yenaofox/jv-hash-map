@@ -163,7 +163,7 @@ public class MyHashMapTest {
         Assert.assertEquals("Test failed! The size isn't correct",
                 1000, myHashMap.getSize());
         for (int i = 0; i < 1000; i++) {
-            Assert.assertSame(i, myHashMap.getValue(new Car("model_" + i, "color_" + i)));
+            Assert.assertEquals(Integer.valueOf(i), myHashMap.getValue(new Car("model_" + i, "color_" + i)));
         }
     }
 
@@ -193,7 +193,7 @@ public class MyHashMapTest {
         Assert.assertEquals("Test failed! The size isn't correct",
                 1000, myHashMap.getSize());
         for (int i = 0; i < 1000; i++) {
-            Assert.assertSame(i, myHashMap.getValue(new Bus("model_" + i, "color_" + i)));
+            Assert.assertEquals(Integer.valueOf(i), myHashMap.getValue(new Bus("model_" + i, "color_" + i)));
         }
     }
 }
