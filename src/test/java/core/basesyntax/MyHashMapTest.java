@@ -34,8 +34,8 @@ public class MyHashMapTest {
         myHashMap.put(secondCar, 5);
         myHashMap.put(thirdCar, 1);
 
-        Assert.assertEquals("Test failed! The size isn't correct",
-                3, myHashMap.getSize());
+        Assert.assertEquals("Test failed! The size isn't correct. Expected 3 but was "
+                + myHashMap.getSize(), 3, myHashMap.getSize());
 
         Integer firstActualValue = myHashMap.getValue(firstCar);
         Integer secondActualValue = myHashMap.getValue(secondCar);
@@ -79,14 +79,14 @@ public class MyHashMapTest {
         Integer firstActualValue = myHashMap.getValue(null);
         Assert.assertEquals("Test failed! HashMap expects to contain 3 values, but was "
                 + firstActualValue, Integer.valueOf(3), firstActualValue);
-        Assert.assertEquals("Test failed! The size isn't correct",
-                1, myHashMap.getSize());
+        Assert.assertEquals("Test failed! The size isn't correct. Expected 1 but was "
+                + myHashMap.getSize(), 1, myHashMap.getSize());
         myHashMap.put(null, 5);
         Integer secondActualValue = myHashMap.getValue(null);
         Assert.assertEquals("Test failed! HashMap expects to contain 5 values, but was "
                 + secondActualValue, Integer.valueOf(5), secondActualValue);
-        Assert.assertEquals("Test failed! The size isn't correct",
-                1, myHashMap.getSize());
+        Assert.assertEquals("Test failed! The size isn't correct. Expected 1 but was "
+                + myHashMap.getSize(), 1, myHashMap.getSize());
     }
 
     @Test
@@ -96,8 +96,8 @@ public class MyHashMapTest {
         myHashMap.put(secondPlane, 5);
         myHashMap.put(thirdPlane, 1);
 
-        Assert.assertEquals("Test failed! The size isn't correct",
-                3, myHashMap.getSize());
+        Assert.assertEquals("Test failed! The size isn't correct. Expected 3 but was "
+                + myHashMap.getSize(), 3, myHashMap.getSize());
 
         Integer firstActualValue = myHashMap.getValue(firstPlane);
         Integer secondActualValue = myHashMap.getValue(secondPlane);
@@ -119,8 +119,8 @@ public class MyHashMapTest {
         myHashMap.put(null, 10);
         myHashMap.put(thirdBus, 1);
 
-        Assert.assertEquals("Test failed! The size isn't correct",
-                4, myHashMap.getSize());
+        Assert.assertEquals("Test failed! The size isn't correct. Expected 4 but was "
+                + myHashMap.getSize(), 4, myHashMap.getSize());
 
         Integer firstActualValue = myHashMap.getValue(firstBus);
         Integer secondActualValue = myHashMap.getValue(secondBus);
@@ -140,14 +140,14 @@ public class MyHashMapTest {
     public void putAndGetTheOverriddenValueByKey() {
         MyMap<Car, Integer> myHashMap = new MyHashMap();
         myHashMap.put(firstCar, 3);
-        Assert.assertEquals("Test failed! The size isn't correct",
-                1, myHashMap.getSize());
+        Assert.assertEquals("Test failed! The size isn't correct. Expected 1 but was "
+                + myHashMap.getSize(), 1, myHashMap.getSize());
         Integer firstActualValue = myHashMap.getValue(firstCar);
         Assert.assertEquals("Test failed! HashMap expects to contain 3 values, but was "
                 + firstActualValue, Integer.valueOf(3), firstActualValue);
         myHashMap.put(firstCar, 5);
-        Assert.assertEquals("Test failed! The size isn't correct",
-                1, myHashMap.getSize());
+        Assert.assertEquals("Test failed! The size isn't correct. Expected 1 but was "
+                + myHashMap.getSize(), 1, myHashMap.getSize());
         Integer secondActualValue = myHashMap.getValue(firstCar);
         Assert.assertEquals("Test failed! HashMap expects to contain 5 values, but was "
                 + secondActualValue, Integer.valueOf(5), secondActualValue);
@@ -160,18 +160,19 @@ public class MyHashMapTest {
             Car car = new Car("model_" + i, "color_" + i);
             myHashMap.put(car, i);
         }
-        Assert.assertEquals("Test failed! The size isn't correct",
-                1000, myHashMap.getSize());
+        Assert.assertEquals("Test failed! The size isn't correct. Expected 1000 but was "
+                + myHashMap.getSize(), 1000, myHashMap.getSize());
         for (int i = 0; i < 1000; i++) {
-            Assert.assertEquals(Integer.valueOf(i), myHashMap.getValue(new Car("model_" + i, "color_" + i)));
+            Assert.assertEquals(Integer.valueOf(i),
+                    myHashMap.getValue(new Car("model_" + i, "color_" + i)));
         }
     }
 
     @Test
     public void getSizeOfEmptyHashMap() {
         MyMap<Car, Integer> myHashMap = new MyHashMap();
-        Assert.assertEquals("Test failed! The size isn't correct",
-                0, myHashMap.getSize());
+        Assert.assertEquals("Test failed! The size isn't correct. Expected 0 but was "
+                + myHashMap.getSize(), 0, myHashMap.getSize());
     }
 
     @Test
@@ -179,8 +180,8 @@ public class MyHashMapTest {
         MyMap<Plane, Integer> myHashMap = new MyHashMap();
         myHashMap.put(firstPlane, 3);
         myHashMap.put(secondPlane, 5);
-        Assert.assertEquals("Test failed! The size isn't correct",
-                2, myHashMap.getSize());
+        Assert.assertEquals("Test failed! The size isn't correct. Expected 2 but was "
+                + myHashMap.getSize(), 2, myHashMap.getSize());
     }
 
     @Test
@@ -190,10 +191,11 @@ public class MyHashMapTest {
             Bus bus = new Bus("model_" + i, "color_" + i);
             myHashMap.put(bus, i);
         }
-        Assert.assertEquals("Test failed! The size isn't correct",
-                1000, myHashMap.getSize());
+        Assert.assertEquals("Test failed! The size isn't correct. Expected 1000 but was "
+                + myHashMap.getSize(), 1000, myHashMap.getSize());
         for (int i = 0; i < 1000; i++) {
-            Assert.assertEquals(Integer.valueOf(i), myHashMap.getValue(new Bus("model_" + i, "color_" + i)));
+            Assert.assertEquals(Integer.valueOf(i),
+                    myHashMap.getValue(new Bus("model_" + i, "color_" + i)));
         }
     }
 }
