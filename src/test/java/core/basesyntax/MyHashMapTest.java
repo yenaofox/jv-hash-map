@@ -23,7 +23,7 @@ public class MyHashMapTest {
     @Test
     public void getByNonExistedKey() {
         MyMap<Car, Integer> myHashMap = new MyHashMap();
-        Assert.assertNull("Test failed! If key doesn't exist, we shoud return null.",
+        Assert.assertNull("Test failed! If key doesn't exist, we should return null.",
                 myHashMap.getValue(firstCar));
     }
 
@@ -58,8 +58,8 @@ public class MyHashMapTest {
         myHashMap.put(sameSecondCar, 5);
         myHashMap.put(sameThirdCar, 1);
 
-        Assert.assertEquals("Test failed! We should add checking if the same element " +
-                "exist in the map", 3, myHashMap.getSize());
+        Assert.assertEquals("Test failed! We should add checking if the same element "
+                + "exists in the map", 3, myHashMap.getSize());
 
         Integer firstActualValue = myHashMap.getValue(firstCar);
         Integer secondActualValue = myHashMap.getValue(secondCar);
