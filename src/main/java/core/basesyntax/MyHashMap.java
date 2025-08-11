@@ -21,16 +21,16 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         }
         int index = calculateIndex(key);
         Node<K, V> head = buckets[index];
-        // Если по этому индексу уже есть цепочка
+        // If there is already a chain at this index
         if (head != null) {
             Node<K, V> current = head;
             while (true) {
-                // Если такой ключ уже существует — просто обновляем значение
+                // If such a key already exists, simply update the value
                 if (Objects.equals(key, current.key)) {
                     current.value = value;
                     return;
                 }
-                // Если это последняя нода в списке — добавляем новую в конец
+                // If this is the last node in the list, we add a new one to the end
                 if (current.next == null) {
                     current.next = new Node<>(key, value, null);
                     size++;
@@ -39,14 +39,9 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
                 current = current.next;
             }
         }
-        // Если цепочка пуста — просто вставляем новую ноду
+        // If the chain is empty, simply insert a new node
         buckets[index] = new Node<>(key, value, null);
         size++;
-    }
-
-    public int calculateIndex(K key) {
-        int hash = hashCode(key);
-        return (hash & 0x7fffffff) % buckets.length;
     }
 
     @Override
@@ -60,6 +55,11 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
             current = current.next;
         }
         return null;
+    }
+
+    @Override
+    public int getSize() {
+        return size;
     }
 
     private void resize() {
@@ -76,9 +76,14 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         }
     }
 
-    @Override
-    public int getSize() {
-        return size;
+    private int calculateIndex(K key) {
+        int hash = hashCode(key);
+        return (hash & 0x7fffffff) % buckets.length;
+    }
+
+    private int hashCode(K key) {
+        int h;
+        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
 
     private static class Node<K, V> {
@@ -91,11 +96,5 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
             this.value = value;
             this.next = next;
         }
-    }
-
-    @Override
-    public int hashCode(K key) {
-        int h;
-        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
 }
